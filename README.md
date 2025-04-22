@@ -1,4 +1,4 @@
-> #### Make this code better by:
+> #### **Make this code better by:**
 >
 > - Adding persistance (write to a file)
 > - Adding functionality to delete multiple notes by separating the id numbers with a comma
