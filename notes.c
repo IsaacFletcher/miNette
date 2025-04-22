@@ -11,9 +11,8 @@ struct user_note {
 
 struct VectorBombordino {
   size_t size; // Element count (8 bytes)
-  size_t capacity;// Texy axper jan (8 bytes)
-  struct user_note *data; // El ur aranc himnakana data-i axper jan (12 bytes)
-                          // obshi 28 byte
+  size_t capacity;
+  struct user_note *data;
 };
 
 typedef struct VectorBombordino VectorBombordino; // so we don't put struct everytime before VectorBombordino type
@@ -88,7 +87,7 @@ void empty_vector_handle(VectorBombordino *vectornash) {
 }
 
 void resize(VectorBombordino *vectornash) {
-  vectornash->capacity = vectornash->capacity == 0 ? 1 : vectornash->capacity * 2; // if the capacity of the vwctor is 0
+  vectornash->capacity = vectornash->capacity == 0 ? 1 : vectornash->capacity * 2; // if the capacity of the vector is 0
                                                                                    // make it 1
                                                                                    // else multiply the capacity by 2
 
@@ -179,11 +178,3 @@ int main() {
 
   return 0;
   }
-
-
-/* TODO:
- *
- * 1) asigning id's to notes.
- * 2) deleting notes based on id.
- * 3) capturing CTR+C and calling destructor before ending application process
- */
