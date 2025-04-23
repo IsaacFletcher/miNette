@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char* help = "usage: h - help, s - see all miNettes, a - add miNette, d - delete miNette\n";
+const char* help = "usage: h - help, s - see all mishNotes, a - add mishNote, d - delete mishNote\n";
 
 struct user_note {
   int id; // 4 bytes
@@ -44,17 +44,17 @@ void list_notes(VectorBombordino *vectornash, user_note *un){
   }
 }
 
-void delete_note(VectorBombordino *vectornash, int *to_delete){
-  size_t index = -1; // invalid number
+void delete_note(VectorBombordino *vectornash, int to_delete){
+  long int index = -1; // invalid number
 
   for(size_t i = 0; i < vectornash->size; i++){
-    if(vectornash->data[i].id == *to_delete){
+    if(vectornash->data[i].id == to_delete){
       index = i;
       break;
     }
   }
-  if(index == (size_t)-1){
-        printf("Note with ID %d not found.\n", *to_delete);
+  if(index == -1){
+        printf("Note with ID %d not found.\n", to_delete);
         return;
       }
   free(vectornash->data[index].text);
@@ -132,7 +132,7 @@ int main() {
   for (size_t i = 0; i < ARRAY_SIZE; ++i) {
     note_buf[i] = 0; // clean the buffer before giving it to the user
   }
-  printf("***Welcome to miNettes***\n");
+  printf("***Welcome to mishNotes***\n");
   puts(help);
   while(1) {
     char method;
@@ -148,9 +148,9 @@ int main() {
       break;
 
     case 'd':
-      printf("Enter miNette id to delete: ");
+      printf("Enter mishNote id to delete: ");
       scanf(" %d: ", &to_delete);
-      delete_note(&vector_object, &to_delete);
+      delete_note(&vector_object, to_delete);
       break;
     case 'h':
       puts(help);
@@ -160,12 +160,12 @@ int main() {
       break;
     case 'a':
       id++;
-      puts("*Start typing your miNette*");
+      puts("*Start typing your mishNote*");
       user_note note;
       scanf(" %[^\n]s", note_buf);
       add_text_to_note(&note, note_buf, &id); // allocates memory for the note
       push_back(&vector_object,&note); // pushes the note to our array
-      puts("*miNette Saved*");
+      puts("*mishNote Saved*");
 
       // Clear draft area
       for (size_t i = 0; i < strlen(note.text); ++i) {
